@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: reactive-kafka-consumer
+  profiles:
+    active : development
+  config:
+    import: configserver:http://localhost:8888

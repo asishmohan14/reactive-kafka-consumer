@@ -1,12 +1,10 @@
 package com.asish.reactive.kafka.consumer.service;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.kafka.core.reactive.ReactiveKafkaConsumerTemplate;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Slf4j
@@ -24,12 +22,12 @@ public class ReactiveKafkaConsumer {
   private Mono<Void> startKafkaConsumer() {
     return reactiveKafkaConsumerTemplate
         .receiveAutoAck()
-        .doOnNext(consumerRecord -> proecessRecord(consumerRecord.value()))
+        .doOnNext(consumerRecord -> processRecord(consumerRecord.value()))
         //.map(ConsumerRecord<String, String>::value);
         .then();
   }
 
-  private void proecessRecord(String value) {
+  private void processRecord(String value) {
     log.info("received message is : {}", value);
   }
 
