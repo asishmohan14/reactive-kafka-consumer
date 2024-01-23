@@ -1,0 +1,7 @@
+#adding git ignore files
+.idea
+.gradle
+gradle
+gradlew.bat
+gradlew
+reactive-kafka-consumer.iml
